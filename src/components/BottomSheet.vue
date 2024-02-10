@@ -139,11 +139,11 @@ const sheet = useBottomSheet();
 
 
 <template>
-  <div class="wrapper" ref="sheet" :style="{ height: sheetHeight }">
+  <div class="wrapper" ref="sheet" :style="{ height: sheetHeight  }">
+    <BottomSheetHeader />
     <div class="content" ref="content">
       <BottomSheetContent />
     </div>
-    <BottomSheetHeader />
   </div>
 </template>
 
@@ -290,7 +290,7 @@ onMounted(() => {
   bottom: 0; /* 이전 코드: top: 0; */
   left: 0;
   right: 0;
-  border-top-left-radius: 8px;
+  /* border-top-left-radius: 8px; */
   border-top-right-radius: 8px;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);

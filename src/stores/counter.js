@@ -1,18 +1,12 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { storeToRefs } from 'pinia'
-import { useMemberStore } from './user'
 
 export const useCounterStore = defineStore('counter', () => {
-  const memberStore = useMemberStore()
-  const { userInfo } = storeToRefs(memberStore)
+  const count = ref(0)
+  const doubleCount = computed(() => count.value * 2)
+  function increment() {
+    count.value++
+  }
 
-  const BASE_SERVER_URL = "http://localhost:8080"
-
-  // const modifyUser = ref({
-  //   userId: userInfo.value.userId,
-  //   userType: userInfo.value.userType
-  // })
-
-  return { BASE_SERVER_URL  }
+  return { count, doubleCount, increment }
 })

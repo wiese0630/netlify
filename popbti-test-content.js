@@ -1,41 +1,33 @@
-<template>
-  <div>
-    <div class="container">
-    <section id="shareResult" class="mx-auto my-5 py-5 px-3" :class="{ 'fade-in': showResult, 'fade-out': !showResult }">
-      <h3 class="pt-5">당신의 결과는?!</h3>
-      <div class="resultname">
-        <p> {{ point }}</p>
-        <p> {{ infoList[mbtitype].name }}</p>
-      </div>
-      <div id="resultImg" class="my-3 col-lg-6 col-md-6 col-sm-6 cpl-12 mx-auto">
-        <!-- <img src="/src/assets/images/popbti-img/popbti-img-{{mbtitype}}.svg" alt="{{mbtitype}}" class="img-fluid"> -->
-      </div>
-      <div class="resultDesc">
-        <P>{{ infoList[mbtitype].desc }}</P>
-      </div>
-      <button @click="moveHome" type="button" class="gohome mt-3 py-2 px-3">나도 참여하기</button>
-    </section>
-
-  </div>
-
-  </div>
-</template>
-
-<script setup>
-import { useRoute } from 'vue-router';
-
-const route = useRoute()
-
-const point = route.params
-
-const moveHome = () => {
-  window.location.href = '/popbti';
-}
-
-const mbtimatch = {'ISTJ':0, 'ISTP':1, 'ISFJ':2, 'ISFP':3,
-                    'INTJ':4, 'INTP':5, 'INFJ':6, 'INFP':7,
-                    'ESTJ':8, 'ESTP':9, 'ESFJ':10, 'ESFP':11,
-                    'ENTJ':12,'ENTP':13,'ENFJ':14, 'ENFP':15}
+const qnaList = [
+  {
+    q: '1. 핫하다는 팝업은 다 모여있는 성수에 가려는 당신, 누구와 같이 갈까??',
+    a: [
+      { answer: 'a. 같이는 무슨~ 내 취향저격 팝업만 골라서 갈래!! 혼자 가는게 편해!!', type: ['I'] },
+      { answer: 'b. 함께하면 행복이 N배! 다같이 모여서 인생네컷 찍고 맛집 뿌시자!!', type: ['E'] },
+    ]
+  },
+  {
+    q: '2. 약속 시간이 얼마 남지 않은 당신! 남은 시간 안에 둘 중 한군데만 방문할 수 있다면?? ',
+    a: [
+      { answer: 'a. 남는 건 사진뿐이야~ 사진이 잘 나오는 포토스팟이 많은 팝업!!', type: ['N'] },
+      { answer: 'b. 실용적인게 최고! 특이한 경험을 하거나 굿즈를 받을 수 있는 팝업!!', type: ['S'] },
+    ]
+  },
+  {
+    q: '3. 갖고싶었던 굿즈가 있어 N시간 줄 섰는데 내 눈앞에서 품절됐다!! 이때 당신의 반응은??',
+    a: [
+      { answer: 'a. 내가이것때문에새벽같이일어나서N시간동안줄서서기다렸는데품절이라니말도안돼내세상이무너졌어... 절망한다.', type: ['F'] },
+      { answer: 'b. 이거 재입고 되나요? 언제 되나요? 하루에 몇 개씩 입고되나요? 언제쯤 줄 서야 살 수 있어요? 질문한다.', type: ['T'] },
+    ]
+  },
+  {
+    q: '4. 가고 싶은 팝업이 예약 마감되어버리고 말았다. 남은 방법은 현장대기뿐! 당신의 선택은??',
+    a: [
+      { answer: 'a. 입장할 수 있을지 불확실하네 ㅠㅠ 그냥 다른 데 찾아보자! ', type: ['J'] },
+      { answer: 'b. 기다려보고 못들어가면 그때 가서 생각하지 뭐~ 일단 가보자고! ', type: ['P' ] },
+    ]
+  },
+]
 
 const infoList = [
   {
@@ -103,30 +95,3 @@ const infoList = [
     desc: '단아하고 고상한 품격을 가진 당신! 마음을 먹을 때 느긋하게 행동하고, 상대방에 대한 배려가 상당히 많아 온화한 성품을 가지고 있어요. 또한 솔직한 성격으로 신뢰를 받을 수 있는 타입이며, 어떠한 일을 하든 책임감이 강해 무사히 마무리한답니다. 현실적인 성향이 강해 실리를 잘 챙기나, 표현력이 다소 부족해 상대방이 사랑받는다는 감정을 못 느낄수도 있어요. 은근히 질투심이 강하고 고지식한 면이 강해, 누가 자기에게 잘못하면 지구 끝까지 복수 할 수 있을 정도이기 때문에 이 점을 조심해야 한답니다! '
   },
 ]
-
-
-</script>
-
-<style scoped>
-#shareResult {
-  background-color: whitesmoke;
-  width: 80%;
-  text-align: center;
-  border-radius: 20px;
-  opacity: 1;
-}
-
-.goHome{
-  color: white;
-  background-color: pink;
-  font-size: 20px;
-  border: 0px;
-  border-radius: 20px;
-
-}
-
-.goHome:hover, .goHome:focus{
-  background-color: whitesmoke;
-  color: pink;
-}
-</style>
